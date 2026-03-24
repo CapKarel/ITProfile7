@@ -1,14 +1,8 @@
 <?php
-// Načtení databáze (bude dostupná ve všech podstránkách)
 require_once "db.php";
-
-// 1. Získání stránky z URL (výchozí je 'home')
 $page = $_GET["page"] ?? "home";
-
-// 2. Definice povolených stránek (ochrana proti neoprávněnému přístupu)
 $allowed_pages = ["home", "interests", "skills"];
 
-// 3. Logika routingu
 if (in_array($page, $allowed_pages)) {
     $content = "pages/" . $page . ".php";
 } else {
@@ -20,11 +14,10 @@ if (in_array($page, $allowed_pages)) {
 <html lang="cs">
 <head>
     <meta charset="UTF-8">
-    <title>IT Profil 7.0</title>
+    <title>IT Profil 6-7</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
     <nav>
         <a href="index.php?page=home">Domů</a>
         <a href="index.php?page=interests">Zájmy</a>
@@ -33,7 +26,6 @@ if (in_array($page, $allowed_pages)) {
 
     <main>
         <?php 
-            // Vložení konkrétní podstránky
             require $content; 
         ?>
     </main>
